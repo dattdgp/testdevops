@@ -1,1 +1,2 @@
 This is file specific to Feature1 branch
+This line is added to check modified file during stash
