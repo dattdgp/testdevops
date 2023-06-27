@@ -62,12 +62,12 @@
         "displayName": "appServicePlan1"
     },
     "kind": "linux",
-    "properties": {
-        "perSiteScaling": false,
-        "reserved": false,
-        "targetWorkerCount": 0,
-        "targetWorkerSizeId": 0
-    }
+    //"properties": {
+        //"perSiteScaling": false,
+        //"reserved": false,
+        //"targetWorkerCount": 0,
+        //"targetWorkerSizeId": 0
+    //}
 }
     ],
     "outputs": {
