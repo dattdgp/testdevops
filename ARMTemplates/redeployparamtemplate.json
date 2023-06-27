@@ -32,7 +32,7 @@
             "tags": {
             "displayName": "storageaccount1"
             },
-            "location": "eastus",
+            "location": "westus",
             "kind": "StorageV2",
             "sku": {
                 "name": "[parameters('StorageSKU')]",
