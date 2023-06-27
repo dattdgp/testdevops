@@ -14,7 +14,7 @@
         "sku": {
             "name": "Standard_LRS",
             "tier": "Standard"
-        }
+        },
         "properties": {
             "supportsHttpsTrafficOnly": true
         }
