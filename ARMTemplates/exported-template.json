@@ -1,0 +1,79 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+            "storagePrefix": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 11
+            },
+            "StorageSKU": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
+                "Standard_ZRS",
+                "Premium_LRS",
+                "Premium_ZRS",
+                "Standard_GZRS",
+                "Standard_RAGZRS"
+            ]
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "appServicePlanName": {
+            "type": "string",
+            "defaultValue": "dgpwebplan"
+        }
+    },
+    "functions": [],
+    "variables": {
+        "uniqueStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "name":"[variables('uniqueStorageName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "tags": {
+            "displayName": "storageaccount1"
+            },
+            "location": "[parameters('location')]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('StorageSKU')]",
+                "tier": "Standard"
+            }
+        },
+{
+    "name": "[parameters('appServicePlanName')]",
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2020-12-01",
+    "location": "[parameters('location')]",
+    "sku": {
+        "name": "F1",
+        "capacity": 1
+    },
+    "tags": {
+        "displayName": "appServicePlan1"
+    },
+    "kind": "linux",
+    "properties": {
+        "perSiteScaling": false,
+        "reserved": false,
+        "targetWorkerCount": 0,
+        "targetWorkerSizeId": 0
+    }
+}
+    ],
+    "outputs": {
+        "storageEndpoint": {
+            "type": "object",
+            "value": "[reference(variables('uniqueStorageName')).primaryEndpoints]"
+        }
+    }
+}
