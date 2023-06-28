@@ -1,4 +1,4 @@
-$resourceGroup = Read-Host -Prompt "Enter your resource group name: "
+$resourceGroup = Read-Host -Prompt "Enter your resource group name"
 echo "creating the resourge group $resourceGroup..."
 az group create --name $resourceGroup --location eastus
 echo "Resource group $resourceGroup is created."
