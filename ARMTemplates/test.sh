@@ -1,5 +1,5 @@
 $resourceGroup = Read-Host -Prompt "Enter your resource group name: "
-echo "creating the resourge group..." $resourceGroup
+echo "creating the resourge group $resourceGroup..."
 az group create --name wincc-rg --location eastus
 echo "Resource group $resourceGroup is created."
 echo "Adding IOT Hub extension..."
