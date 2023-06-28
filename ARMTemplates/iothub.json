@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+        "type": "string",
+        "defaultValue": "eastus"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2022-04-30-preview",
+      "location": "[parameters('location')]",
+      "name": "demoHub-01",
+      "sku": {
+        "name": "S1",
+        "capacity": 1
+      },
+      "properties": {
+        
+      }
+    }
+  ]
+}
